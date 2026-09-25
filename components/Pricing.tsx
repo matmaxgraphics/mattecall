@@ -1,7 +1,7 @@
 import { Container, Eyebrow } from "./Container";
 import { Reveal } from "./Reveal";
 import { Icon } from "./icons";
-import { pricing } from "@/lib/content";
+import { pricing, hero } from "@/lib/content";
 
 export function Pricing() {
   return (
@@ -12,18 +12,27 @@ export function Pricing() {
           <h2 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
             {pricing.title}
           </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft">
+            {pricing.intro}
+          </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-4xl gap-6 lg:grid-cols-[3fr_2fr] lg:items-start">
           {pricing.tiers.map((tier, i) => (
             <Reveal key={tier.name} delayMs={i * 90}>
               <div
-                className={`flex h-full flex-col rounded-3xl border p-8 ${
+                className={`relative flex h-full flex-col rounded-3xl border ${
                   tier.highlighted
-                    ? "border-ink bg-ink text-paper"
-                    : "border-hairline bg-paper"
+                    ? "border-ink bg-ink p-8 text-paper shadow-[0_24px_48px_-16px_rgba(20,19,15,0.35)] sm:p-10 lg:scale-[1.03]"
+                    : "border-hairline bg-paper p-6 sm:p-8"
                 }`}
               >
+                {tier.badge && (
+                  <span className="absolute -top-3 left-8 inline-flex items-center rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-paper shadow-sm">
+                    {tier.badge}
+                  </span>
+                )}
+
                 <div className="flex items-center justify-between">
                   <span
                     className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] ${
@@ -43,7 +52,13 @@ export function Pricing() {
                   </span>
                 </div>
 
-                <h3 className="mt-5 text-xl font-semibold">{tier.name}</h3>
+                <h3
+                  className={`mt-5 font-semibold ${
+                    tier.highlighted ? "text-2xl" : "text-xl"
+                  }`}
+                >
+                  {tier.name}
+                </h3>
                 <p
                   className={`mt-2 text-sm leading-relaxed ${
                     tier.highlighted ? "text-paper/75" : "text-ink-soft"
@@ -53,7 +68,11 @@ export function Pricing() {
                 </p>
 
                 <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-4xl font-bold tracking-tight">
+                  <span
+                    className={`font-bold tracking-tight ${
+                      tier.highlighted ? "text-5xl" : "text-4xl"
+                    }`}
+                  >
                     {tier.price}
                   </span>
                   <span
@@ -64,6 +83,20 @@ export function Pricing() {
                     {tier.priceSuffix}
                   </span>
                 </div>
+
+                {tier.foundingOffer && (
+                  <div className="mt-5 rounded-2xl border border-accent-soft-2/40 bg-paper/10 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.08em] text-accent-soft-2">
+                      {tier.foundingOffer.label}
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-paper/90">
+                      {tier.foundingOffer.line}
+                    </p>
+                    <p className="mt-1.5 text-xs font-medium text-paper/60">
+                      {tier.foundingOffer.spotsNote}
+                    </p>
+                  </div>
+                )}
 
                 {tier.featuresIntro && (
                   <p
@@ -103,10 +136,10 @@ export function Pricing() {
 
                 <a
                   href={tier.cta.href}
-                  className={`mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-transform hover:-translate-y-0.5 ${
+                  className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-transform hover:-translate-y-0.5 ${
                     tier.highlighted
-                      ? "bg-paper text-ink"
-                      : "bg-ink text-paper"
+                      ? "h-14 bg-paper px-7 text-base text-ink"
+                      : "h-12 bg-ink px-6 text-sm text-paper"
                   }`}
                 >
                   {tier.cta.label}
@@ -121,6 +154,21 @@ export function Pricing() {
           <p className="mx-auto mt-8 max-w-xl text-center text-xs text-ink-faint">
             {pricing.note}
           </p>
+        </Reveal>
+
+        <Reveal delayMs={240}>
+          <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-3 text-center">
+            <p className="text-sm font-medium text-ink-soft">
+              Want to hear it before you decide?
+            </p>
+            <a
+              href={hero.primaryCta.href}
+              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-ink px-8 text-base font-semibold text-paper shadow-[0_12px_24px_-8px_rgba(20,19,15,0.35)] transition-transform hover:-translate-y-0.5"
+            >
+              <Icon name="CallFilled" className="h-5 w-5 text-accent-soft-2" />
+              {hero.primaryCta.label}
+            </a>
+          </div>
         </Reveal>
       </Container>
     </section>

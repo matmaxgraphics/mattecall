@@ -44,20 +44,19 @@ export function Hero() {
           </Reveal>
 
           <Reveal delayMs={280}>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href={hero.secondaryCta.href}
-                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-ink px-7 text-sm font-semibold text-paper transition-transform hover:-translate-y-0.5 sm:w-auto"
-              >
-                {hero.secondaryCta.label}
-                <Icon name="ArrowRightRegular" className="h-4 w-4" />
-              </a>
+            <div className="mt-9 flex flex-col items-center justify-center gap-4">
               <a
                 href={hero.primaryCta.href}
-                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-hairline-strong bg-paper px-7 text-sm font-semibold text-ink transition-colors hover:bg-paper-alt sm:w-auto"
+                className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-ink px-8 text-base font-semibold text-paper shadow-[0_12px_24px_-8px_rgba(20,19,15,0.35)] transition-transform hover:-translate-y-0.5 sm:w-auto"
               >
-                <Icon name="PlayCircle24Regular" className="h-5 w-5 text-accent" />
+                <Icon name="CallFilled" className="h-5 w-5 text-accent-soft-2" />
                 {hero.primaryCta.label}
+              </a>
+              <a
+                href={hero.secondaryCta.href}
+                className="text-sm font-medium text-ink-faint underline decoration-hairline-strong underline-offset-4 transition-colors hover:text-ink-soft"
+              >
+                {hero.secondaryCta.label}
               </a>
             </div>
           </Reveal>

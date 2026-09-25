@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Frontline AI, AI Receptionist for Home Service Businesses",
+  title: "MatteCall, AI Receptionist for Home Service Businesses",
   description:
     "An AI receptionist that answers your business calls 24/7, handles common customer questions, qualifies service requests, and books appointments directly into your calendar.",
 };

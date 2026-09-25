@@ -1,4 +1,4 @@
-// Central copy source for the Frontline AI landing page.
+// Central copy source for the MatteCall landing page.
 // Every string here has been checked for dashes (hyphens and em dashes);
 // where the source material used one, it has been rewritten with proper
 // punctuation or restructured wording instead.
@@ -17,8 +17,11 @@ export const hero = {
     "Your technicians are busy doing the work. Your receptionist shouldn't have to be.",
   body: "We set up an AI receptionist that answers your business calls 24/7, handles common customer questions, qualifies service requests, and books appointments directly into your calendar.",
   callout: "Every call gets an answer. Every opportunity gets a next step.",
-  primaryCta: { label: "Watch The 60 Second Demo", href: "#demo" },
-  secondaryCta: { label: "Book A Free Demo", href: "#contact" },
+  primaryCta: {
+    label: "Call The Demo: (234) 256-4947",
+    href: "tel:+12342564947",
+  },
+  secondaryCta: { label: "Book A Free 15 Minute Call", href: "#contact" },
 };
 
 export const problem = {
@@ -237,19 +240,73 @@ export const builtAround = {
   closingLine: "And when your business changes, the system can be updated.",
 };
 
-export const pricing = {
+type PricingTier = {
+  kind: string;
+  badge?: string;
+  name: string;
+  cadence: string;
+  description: string;
+  price: string;
+  priceSuffix: string;
+  foundingOffer?: {
+    label: string;
+    line: string;
+    spotsNote: string;
+  };
+  featuresIntro?: string;
+  features: string[];
+  cta: { label: string; href: string };
+  highlighted: boolean;
+};
+
+export const pricing: {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  note: string;
+  tiers: PricingTier[];
+} = {
   eyebrow: "Choose How Much Help You Need",
   title: "Two Ways To Work With Us",
+  intro:
+    "These are two alternative paths, not two charges that stack. Pick one: a one-time Setup you run yourself afterward, or Full Management with setup included and a monthly plan you can cancel anytime.",
   note: "Software/usage costs are separate and paid by the business.",
   tiers: [
     {
-      kind: "Setup",
-      name: "AI Receptionist Launch",
-      cadence: "One time implementation",
+      kind: "Managed",
+      badge: "Easiest way to start",
+      name: "Full Management",
+      cadence: "Monthly, cancel anytime",
       description:
-        "For businesses that want the system configured and launched for them.",
+        "Setup is included. We configure, launch, and continuously manage your receptionist for you.",
+      price: "$150",
+      priceSuffix: "starting from, per month",
+      foundingOffer: {
+        label: "Founding Client Pricing, Limited Time",
+        line: "First 5 clients: the $500 setup fee is waived. Start on the monthly plan with no upfront cost.",
+        spotsNote: "3 of 5 founding spots remaining",
+      },
+      featuresIntro: "Includes everything in Setup, plus:",
+      features: [
+        "Conversation monitoring",
+        "Ongoing response improvements",
+        "Business information updates",
+        "Workflow adjustments",
+        "New FAQ/configuration updates",
+        "Performance review",
+        "Ongoing support",
+      ],
+      cta: { label: "Become A Founding Client", href: "#contact" },
+      highlighted: true,
+    },
+    {
+      kind: "Setup",
+      name: "Setup Only",
+      cadence: "One time, self-managed after",
+      description:
+        "Prefer to run it yourself after launch? A one-time setup with no ongoing contract.",
       price: "$500",
-      priceSuffix: "starting from",
+      priceSuffix: "one time, no monthly fee",
       features: [
         "Business configuration",
         "AI receptionist setup",
@@ -264,27 +321,6 @@ export const pricing = {
       ],
       cta: { label: "Get My Receptionist Set Up", href: "#contact" },
       highlighted: false,
-    },
-    {
-      kind: "Managed",
-      name: "AI Receptionist Management",
-      cadence: "Monthly",
-      description:
-        "For businesses that want someone to continuously manage and improve the system.",
-      price: "$150",
-      priceSuffix: "starting from, per month",
-      featuresIntro: "Includes everything in Setup, plus:",
-      features: [
-        "Conversation monitoring",
-        "Ongoing response improvements",
-        "Business information updates",
-        "Workflow adjustments",
-        "New FAQ/configuration updates",
-        "Performance review",
-        "Ongoing support",
-      ],
-      cta: { label: "Talk About Management", href: "#contact" },
-      highlighted: true,
     },
   ],
 };
@@ -382,12 +418,29 @@ export const finalCta = {
   eyebrow: "Ready To Stop Missing Calls?",
   title: "Your Next Customer Shouldn't Have To Call Three Businesses",
   body: "Before someone answers, let's build a receptionist that can answer, qualify, and book while your team focuses on the job.",
-  primaryCta: { label: "Watch The Demo", href: "#demo" },
-  secondaryCta: { label: "Book A Free 15 Minute Call", href: "#contact" },
+  primaryCta: {
+    label: "Call The Demo: (234) 256-4947",
+    href: "tel:+12342564947",
+  },
+  secondaryCta: {
+    label: "Book A Free 15 Minute Call",
+    href: "https://calendly.com/mateendeveloper/15min",
+  },
   footerLine: "A better phone experience starts with answering the phone.",
+  booking: {
+    calendlyUrl: "https://calendly.com/mateendeveloper/15min",
+    heading: "Or Pick A Time Right Now",
+    subheading: "Grab any open slot below, no back and forth required.",
+    emailCta: {
+      label: "Email Us Instead",
+      href: "mailto:mattecall@gmail.com?subject=Interested%20in%20the%20AI%20receptionist%20service&body=Hi%2C%20I%27m%20interested%20in%20the%20AI%20receptionist%20service.",
+    },
+  },
 };
 
 export const siteMeta = {
-  name: "Frontline AI",
+  name: "MatteCall",
   tagline: "AI receptionist for home service businesses.",
+  demoPhoneDisplay: "(234) 256-4947",
+  demoPhoneHref: "tel:+12342564947",
 };
